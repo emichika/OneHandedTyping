@@ -93,7 +93,7 @@ var endflg = false;
 var correct;
 var mistake;
 var char_num = 0;
-var word_char;
+var wordChar;
 var random;
 
 // セッションデータの削除
@@ -159,7 +159,7 @@ function wordDisplay() {
   nextKeyAndFinger();
 }
 function charInsort() {
-  word_char = wordlist[random].charAt(char_num);
+  wordChar = wordlist[random].charAt(char_num);
 }
 function styleClear() {
   qKey.style.color = "#595959";
@@ -224,7 +224,7 @@ function styleClear() {
   fifthFinger.style.backgroundColor = "#D8D8D8";
 }
 function nextKeyAndFinger() {
-  switch (word_char) {
+  switch (wordChar) {
     case "a":
       aKey.style.color = "#ffffff";
       aKey.style.backgroundColor = "#ffb43e";
@@ -392,7 +392,7 @@ function finish() {
   spaceKey.style.color = "#ffffff";
   spaceKey.style.backgroundColor = "#ffb43e";
   fifthFinger.style.backgroundColor = "#ffb43e";
-  word_char = "";
+  wordChar = "";
   random = 0;
   char_num = 0;
 }
@@ -405,7 +405,7 @@ document.onkeydown = function (e) {
     var keyStr = String.fromCharCode(e.keyCode);
     keyStr = keyStr.toLowerCase();
   }
-  if (keyStr == word_char) {
+  if (keyStr == wordChar) {
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
       wordlist[random].substr(0, char_num + 1) +
