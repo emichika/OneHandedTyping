@@ -117,12 +117,12 @@ function start(e) {
     readytime = 3;
     var readytimer = setInterval(function () {
       startText.style.display = "none";
-      startCount.style.display = "block";
-      startCount.innerHTML = readytime;
+      countdown.style.display = "block";
+      countdown.innerHTML = readytime;
 
       readytime--;
       if (readytime < 0) {
-        startCount.style.display = "none";
+        countdown.style.display = "none";
         clearInterval(readytimer);
         gameStart();
       }
@@ -135,8 +135,8 @@ function gameStart() {
   wordDisplay();
   var time_remaining = 10;
   var gametimer = setInterval(function () {
-    endCount.style.visibility = "visible";
-    endCount.innerHTML = "残り時間：" + time_remaining;
+    timeLimit.style.visibility = "visible";
+    timeLimit.innerHTML = "残り時間：" + time_remaining;
     time_remaining--;
     if (time_remaining == -1) {
       clearInterval(gametimer);
@@ -154,8 +154,8 @@ function wordDisplay() {
 
   charInsort();
   styleClear();
-  headingOne.style.display = "block";
-  headingTow.style.display = "block";
+  firstHeading.style.display = "block";
+  secondHeading.style.display = "block";
   nextKeyAndFinger();
 }
 function charInsort() {
@@ -358,9 +358,9 @@ function nextKeyAndFinger() {
   }
 }
 function finish() {
-  endCount.style.visibility = "hidden";
-  headingOne.style.display = "none";
-  headingTow.style.display = "none";
+  timeLimit.style.visibility = "hidden";
+  firstHeading.style.display = "none";
+  secondHeading.style.display = "none";
 
   var percentage = 0;
   var score = 0;

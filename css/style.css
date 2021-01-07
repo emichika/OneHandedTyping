@@ -11,12 +11,12 @@ body {
   overflow: hidden;
   ime-mode: inactive;
 }
-#endCount {
+#timeLimit {
   width: 608px;
   height: 10px;
   margin: 10px auto;
 }
-#headerContainer {
+#screen {
   width: 608px;
   height: 210px;
   font: 17px メイリオ, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
@@ -32,7 +32,7 @@ body {
   text-align: center;
   padding-top: 60px;
 }
-#startCount {
+#countdown {
   font-size: 50px;
   text-align: center;
   padding-top: 60px;
@@ -64,10 +64,10 @@ body {
   height: 210px;
   margin: 0 auto;
 }
-#keyboard #keyboardContainer #allKeys {
+#keyboard #allKeys {
   position: relative;
 }
-#keyboard #keyboardContainer #allKeys div {
+#allKeys div {
   width: 34px;
   height: 34px;
   border: 1px solid #d8d8d8;
@@ -79,115 +79,115 @@ body {
   overflow: hidden;
   position: absolute;
 }
-#keyboard #keyboardContainer #allKeys #oneKey {
+#keyboard #allKeys #oneKey {
   left: 41px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #towKey {
+#keyboard #allKeys #towKey {
   left: 82px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #threeKey {
+#keyboard #allKeys #threeKey {
   left: 123px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #fourKey {
+#keyboard #allKeys #fourKey {
   left: 164px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #fiveKey {
+#keyboard #allKeys #fiveKey {
   left: 205px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #sixKey {
+#keyboard #allKeys #sixKey {
   left: 246px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #sevenKey {
+#keyboard #allKeys #sevenKey {
   left: 287px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #eightKey {
+#keyboard #allKeys #eightKey {
   left: 328px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #nineKey {
+#keyboard #allKeys #nineKey {
   left: 369px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #zeroKey {
+#keyboard #allKeys #zeroKey {
   left: 410px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #hyphenKey {
+#keyboard #allKeys #hyphenKey {
   left: 451px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #caretKey {
+#keyboard #allKeys #caretKey {
   left: 492px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #yenKey {
+#keyboard #allKeys #yenKey {
   left: 533px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #backSpaceKey {
+#keyboard #allKeys #backSpaceKey {
   left: 574px;
   top: 0;
 }
-#keyboard #keyboardContainer #allKeys #tabKey {
+#keyboard #allKeys #tabKey {
   width: 54px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #qKey {
+#keyboard #allKeys #qKey {
   left: 61px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #wKey {
+#keyboard #allKeys #wKey {
   left: 102px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #eKey {
+#keyboard #allKeys #eKey {
   left: 143px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #rKey {
+#keyboard #allKeys #rKey {
   left: 184px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #tKey {
+#keyboard #allKeys #tKey {
   left: 225px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #yKey {
+#keyboard #allKeys #yKey {
   left: 266px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #uKey {
+#keyboard #allKeys #uKey {
   left: 307px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #iKey {
+#keyboard #allKeys #iKey {
   left: 348px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #oKey {
+#keyboard #allKeys #oKey {
   left: 389px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #pKey {
+#keyboard #allKeys #pKey {
   left: 430px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #atSignKey {
+#keyboard #allKeys #atSignKey {
   left: 471px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #eachParenthesisKey {
+#keyboard #allKeys #eachParenthesisKey {
   left: 512px;
   top: 41px;
 }
-#keyboard #keyboardContainer #allKeys #enterKey {
+#keyboard #allKeys #enterKey {
   width: 57px;
   height: 77px;
   top: 41px;
@@ -196,166 +196,166 @@ body {
   background-size: 100% 100%;
   border: none;
 }
-#keyboard #keyboardContainer #allKeys #capsLockKey {
+#keyboard #allKeys #capsLockKey {
   width: 76px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #aKey {
+#keyboard #allKeys #aKey {
   left: 81px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #sKey {
+#keyboard #allKeys #sKey {
   left: 122px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #dKey {
+#keyboard #allKeys #dKey {
   left: 163px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #fKey {
+#keyboard #allKeys #fKey {
   left: 204px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #gKey {
+#keyboard #allKeys #gKey {
   left: 245px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #hKey {
+#keyboard #allKeys #hKey {
   left: 286px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #jKey {
+#keyboard #allKeys #jKey {
   left: 327px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #kKey {
+#keyboard #allKeys #kKey {
   left: 368px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #lKey {
+#keyboard #allKeys #lKey {
   left: 409px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #semicolonKey {
+#keyboard #allKeys #semicolonKey {
   left: 450px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #colonKey {
+#keyboard #allKeys #colonKey {
   left: 491px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #closeEachParenthesisKey {
+#keyboard #allKeys #closeEachParenthesisKey {
   left: 532px;
   top: 82px;
 }
-#keyboard #keyboardContainer #allKeys #shiftLeftKey {
+#keyboard #allKeys #shiftLeftKey {
   width: 96px;
   left: 0px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #zKey {
+#keyboard #allKeys #zKey {
   left: 101px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #xKey {
+#keyboard #allKeys #xKey {
   left: 142px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #cKey {
+#keyboard #allKeys #cKey {
   left: 183px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #vKey {
+#keyboard #allKeys #vKey {
   left: 224px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #bKey {
+#keyboard #allKeys #bKey {
   left: 265px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #nKey {
+#keyboard #allKeys #nKey {
   left: 306px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #mKey {
+#keyboard #allKeys #mKey {
   left: 347px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #commaKey {
+#keyboard #allKeys #commaKey {
   left: 388px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #dotKey {
+#keyboard #allKeys #dotKey {
   left: 429px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #slashKey {
+#keyboard #allKeys #slashKey {
   left: 470px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #backslashKey {
+#keyboard #allKeys #backslashKey {
   font-family: Arial;
   font-size: 22px;
   left: 511px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #shiftRightKey {
+#keyboard #allKeys #shiftRightKey {
   width: 58px;
   left: 552px;
   top: 123px;
 }
-#keyboard #keyboardContainer #allKeys #ctrlLeftKey {
+#keyboard #allKeys #ctrlLeftKey {
   width: 54px;
   top: 164px;
 }
-#keyboard #keyboardContainer #allKeys #windowsKey {
+#keyboard #allKeys #windowsKey {
   top: 164px;
   left: 61px;
 }
-#keyboard #keyboardContainer #allKeys #altLeftKey {
+#keyboard #allKeys #altLeftKey {
   top: 164px;
   left: 102px;
 }
-#keyboard #keyboardContainer #allKeys #noConversionKey {
+#keyboard #allKeys #noConversionKey {
   top: 164px;
   left: 143px;
 }
-#keyboard #keyboardContainer #allKeys #spaceKey {
+#keyboard #allKeys #spaceKey {
   width: 179px;
   left: 184px;
   top: 164px;
   background-color: #ffb43e;
   color: #ffffff;
 }
-#keyboard #keyboardContainer #allKeys #conversionKey {
+#keyboard #allKeys #conversionKey {
   top: 164px;
   left: 370px;
 }
-#keyboard #keyboardContainer #allKeys #wonderKey {
+#keyboard #allKeys #wonderKey {
   top: 164px;
   left: 411px;
 }
-#keyboard #keyboardContainer #allKeys #altRightKeykey {
+#keyboard #allKeys #altRightKeykey {
   width: 54px;
   top: 164px;
   left: 452px;
 }
-#keyboard #keyboardContainer #allKeys #menuKey {
+#keyboard #allKeys #menuKey {
   top: 164px;
   left: 513px;
 }
-#keyboard #keyboardContainer #allKeys #ctrlRightKey {
+#keyboard #allKeys #ctrlRightKey {
   width: 56px;
   top: 164px;
   left: 554px;
 }
-#hands {
+#hand {
   width: 240px;
   height: 75px;
   margin: 0 auto 10px;
   position: relative;
 }
-#hands .finger {
+#hand .finger {
   width: 42px;
   height: 75px;
   background-color: #d8d8d8;
@@ -364,19 +364,19 @@ body {
   left: 0;
   border-radius: 21px 21px 0 0;
 }
-#hands #firstFinger {
+#hand #firstFinger {
   height: 55px;
 }
-#hands #secondFinger {
+#hand #secondFinger {
   left: 47px;
 }
-#hands #thirdFinger {
+#hand #thirdFinger {
   left: 94px;
 }
-#hands #fourthFinger {
+#hand #fourthFinger {
   left: 141px;
 }
-#hands #fifthFinger {
+#hand #fifthFinger {
   height: 35px;
   left: 188px;
 }
