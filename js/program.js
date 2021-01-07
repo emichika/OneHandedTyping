@@ -92,7 +92,7 @@ var cleare;
 var endflg = false;
 var correct;
 var mistake;
-var char_num = 0;
+var charNum = 0;
 var wordChar;
 var random;
 
@@ -159,7 +159,7 @@ function wordDisplay() {
   nextKeyAndFinger();
 }
 function charInsort() {
-  wordChar = wordlist[random].charAt(char_num);
+  wordChar = wordlist[random].charAt(charNum);
 }
 function styleClear() {
   qKey.style.color = "#595959";
@@ -394,7 +394,7 @@ function finish() {
   fifthFinger.style.backgroundColor = "#ffb43e";
   wordChar = "";
   random = 0;
-  char_num = 0;
+  charNum = 0;
 }
 document.onkeydown = function (e) {
   if (e.keyCode == 189) {
@@ -408,10 +408,10 @@ document.onkeydown = function (e) {
   if (keyStr == wordChar) {
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
-      wordlist[random].substr(0, char_num + 1) +
+      wordlist[random].substr(0, charNum + 1) +
       "</span>" +
-      wordlist[random].substr(char_num + 1, wordlist[random].length);
-    char_num++;
+      wordlist[random].substr(charNum + 1, wordlist[random].length);
+    charNum++;
     correct++;
     charInsort();
     styleClear();
@@ -421,8 +421,8 @@ document.onkeydown = function (e) {
   } else {
     mistake++;
   }
-  if (char_num == wordlist[random].length) {
-    char_num = 0;
+  if (charNum == wordlist[random].length) {
+    charNum = 0;
     wordDisplay();
   }
 };
