@@ -88,7 +88,7 @@ var wordlistJapanese = [
   "論語読みの論語知らず",
   "笑う門には福来たる",
 ];
-var cleare;
+
 var endflg = false;
 var correct;
 var mistake;
@@ -96,51 +96,60 @@ var charNum = 0;
 var wordChar;
 var random;
 
-// セッションデータの削除
-function load() {
-  sessionStorage.removeItem("startFlg");
+// ロード処理
+function loadProcess() {
+  // 実行中の解除
+  sessionStorage.removeItem("runFlg");
+  // 親指の色を指定
   fifthFinger.style.backgroundColor = "#ffb43e";
-
-  // JSONファイルの読み込み
-  getJSON();
 }
-// JSONファイルの読み込み
-function getJSON() {
-  //FileReaderのインスタンスを作成する
-  var reader = new FileReader();
-}
-function start(e) {
-  if (sessionStorage.getItem("startFlg") == null && e.keyCode == 32) {
-    sessionStorage.setItem("startFlg", true);
+// 開始処理
+function startProcess(e) {
+  // 実施と開始の判定
+  if (sessionStorage.getItem("runFlg") == null && e.keyCode == 32) {
+    // 実行中へ設定
+    sessionStorage.setItem("runFlg", true);
+    // 結果の非表示
     overallResult.style.display = "none";
+    // 再スタートの非表示
     restartText.style.display = "none";
+    // 開始時間を3秒に設定
     readytime = 3;
+    // インターバル処理「1秒間隔」
     var readytimer = setInterval(function () {
+      // スタートテキストの非表示
       startText.style.display = "none";
+      // カウントダウンの表示
       countdown.style.display = "block";
+      // カウントダウンに開始時間を設定
       countdown.innerHTML = readytime;
-
+      // 開始時間のインクリメント
       readytime--;
+      // 開始判定
       if (readytime < 0) {
+        // カウントダウンの非表示
         countdown.style.display = "none";
+        // インターバル処理の終了
         clearInterval(readytimer);
-        gameStart();
+        // タイピング開始処理
+        typingStart();
       }
     }, 1000);
   }
 }
-function gameStart() {
+// タイピング開始処理
+function typingStart() {
   mistake = 0;
   correct = 0;
   wordDisplay();
-  var time_remaining = 10;
+  var timeRemaining = 10;
   var gametimer = setInterval(function () {
     timeLimit.style.visibility = "visible";
-    timeLimit.innerHTML = "残り時間：" + time_remaining;
-    time_remaining--;
-    if (time_remaining == -1) {
+    timeLimit.innerHTML = "残り時間：" + timeRemaining;
+    timeRemaining--;
+    if (timeRemaining == -1) {
       clearInterval(gametimer);
-      sessionStorage.removeItem("startFlg");
+      sessionStorage.removeItem("runFlg");
       finish();
       load();
     }

@@ -11,18 +11,27 @@
     <script src="..\js\program.js"></script>
   </head>
 
-  <body onload="load()" onkeydown="start(event)">
+  <body onload="loadProcess()" onkeydown="startProcess(event)">
+    <!-- タイムリミット -->
     <div id="timeLimit"></div>
+    <!-- 画面 -->
     <div id="screen">
+      <!-- スタートテキスト -->
       <div id="startText">スペースキーで開始</div>
+      <!-- 開始時間 -->
       <div id="countdown"></div>
+      <!-- 日本語 -->
       <h1 id="firstHeading"><div id="japaneseText"></div></h1>
+      <!-- ローマ字 -->
       <h2 id="secondHeading"><div id="romajiText"></div></h2>
+      <!-- 結果 -->
       <div id="overallResult"></div>
+      <!-- 再スタート -->
       <div id="restartText"></div>
     </div>
-
+    <!-- キーボード -->
     <div id="keyboard">
+      <!-- 各キー -->
       <div id="allKeys">
         <div id="hanZenKey">半全</div>
         <div id="oneKey">1</div>
@@ -92,7 +101,9 @@
       </div>
     </div>
 
+    <!-- 片手 -->
     <div id="hand">
+      <!-- 指 -->
       <div id="firstFinger" class="finger"></div>
       <div id="secondFinger" class="finger"></div>
       <div id="thirdFinger" class="finger"></div>
@@ -102,7 +113,8 @@
 
     <hr />
 
-    <footer class="copyright">
+    <footer>
+      <!-- コピーライト -->
       <p>&copy; Copyright emichika Inc. All Rights <span>Ver.1.0.6</span></p>
     </footer>
   </body>
