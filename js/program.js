@@ -1,49 +1,5 @@
-var wordlist = [
-  "aaiebakouiu",
-  "isogabamaware",
-  "uogokoroarebamizugokoro",
-  "ennositanotikaramoti",
-  "oninomenimonamida",
-  "kaiinunitewokamareru",
-  "kyuusiniissyouwoeru",
-  "kutihawazawainomoto",
-  "geijutuhanagakujinseihamijikasi",
-  "koukaisakinitatazu",
-  "sarumokikaraotiru",
-  "siranugahotoke",
-  "suimoamaimokamiwaketa",
-  "zenhaisoge",
-  "daihasyouwokaneru",
-  "tirimotumorebayamatonaru",
-  "turuhasennenkamehamannen",
-  "tenhanibutuwoataezu",
-  "tokihakanenari",
-  "nagaimononihamakarero",
-  "nidoarukotohasandoaru",
-  "nukanikugi",
-  "nekonotemokaritai",
-  "norenniudeosi",
-  "hayaokihasanmonnotoku",
-  "hinonaitokoronikemurihatatanu",
-  "hukusuibonnikaerazu",
-  "benkeinonakidokoro",
-  "hotokenokaomosando",
-  "mayugewoyomareru",
-  "mikaradetasabi",
-  "musumehitorinimukohatinin",
-  "menihame,hanihaha",
-  "motonosayaniosamaru",
-  "yakeisinimizu",
-  "yudantaiteki",
-  "yowarimenitatarime",
-  "rakuhakunotane,kuharakunotane",
-  "ryouyakuhakutininigasi",
-  "ruihatomowoyobu",
-  "reiniyottereinogotosi",
-  "rongoyominorongosirazu",
-  "waraukadonihahukukitaru",
-];
-var wordlistJapanese = [
+// 日本語リスト
+var JapaneseList = [
   "ああ言えばこう言う",
   "急がば回れ",
   "魚心あれば水心",
@@ -87,6 +43,52 @@ var wordlistJapanese = [
   "例によって例の如し",
   "論語読みの論語知らず",
   "笑う門には福来たる",
+];
+// ローマ字リスト
+var romajiList = [
+  "aaiebakouiu",
+  "isogabamaware",
+  "uogokoroarebamizugokoro",
+  "ennositanotikaramoti",
+  "oninomenimonamida",
+  "kaiinunitewokamareru",
+  "kyuusiniissyouwoeru",
+  "kutihawazawainomoto",
+  "geijutuhanagakujinseihamijikasi",
+  "koukaisakinitatazu",
+  "sarumokikaraotiru",
+  "siranugahotoke",
+  "suimoamaimokamiwaketa",
+  "zenhaisoge",
+  "daihasyouwokaneru",
+  "tirimotumorebayamatonaru",
+  "turuhasennenkamehamannen",
+  "tenhanibutuwoataezu",
+  "tokihakanenari",
+  "nagaimononihamakarero",
+  "nidoarukotohasandoaru",
+  "nukanikugi",
+  "nekonotemokaritai",
+  "norenniudeosi",
+  "hayaokihasanmonnotoku",
+  "hinonaitokoronikemurihatatanu",
+  "hukusuibonnikaerazu",
+  "benkeinonakidokoro",
+  "hotokenokaomosando",
+  "mayugewoyomareru",
+  "mikaradetasabi",
+  "musumehitorinimukohatinin",
+  "menihame,hanihaha",
+  "motonosayaniosamaru",
+  "yakeisinimizu",
+  "yudantaiteki",
+  "yowarimenitatarime",
+  "rakuhakunotane,kuharakunotane",
+  "ryouyakuhakutininigasi",
+  "ruihatomowoyobu",
+  "reiniyottereinogotosi",
+  "rongoyominorongosirazu",
+  "waraukadonihahukukitaru",
 ];
 
 var endflg = false;
@@ -157,9 +159,9 @@ function typingStart() {
   wordDisplay();
 }
 function wordDisplay() {
-  random = Math.floor(Math.random() * wordlist.length);
-  japaneseText.innerHTML = wordlistJapanese[random];
-  romajiText.innerHTML = wordlist[random];
+  random = Math.floor(Math.random() * romajiList.length);
+  japaneseText.innerHTML = JapaneseList[random];
+  romajiText.innerHTML = romajiList[random];
 
   charInsort();
   styleClear();
@@ -168,7 +170,7 @@ function wordDisplay() {
   nextKeyAndFinger();
 }
 function charInsort() {
-  wordChar = wordlist[random].charAt(charNum);
+  wordChar = romajiList[random].charAt(charNum);
 }
 function styleClear() {
   qKey.style.color = "#595959";
@@ -407,12 +409,13 @@ function finish() {
 }
 document.onkeydown = function (e) {
   keyStr = e.key;
+
   if (keyStr == wordChar) {
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
-      wordlist[random].substr(0, charNum + 1) +
+      romajiList[random].substr(0, charNum + 1) +
       "</span>" +
-      wordlist[random].substr(charNum + 1, wordlist[random].length);
+      romajiList[random].substr(charNum + 1, romajiList[random].length);
     charNum++;
     correct++;
     charInsort();
@@ -423,8 +426,10 @@ document.onkeydown = function (e) {
   } else {
     mistake++;
   }
-  if (charNum == wordlist[random].length) {
-    charNum = 0;
-    wordDisplay();
+  if (typeof random != "undefined") {
+    if (charNum == romajiList[random].length) {
+      charNum = 0;
+      wordDisplay();
+    }
   }
 };
