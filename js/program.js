@@ -106,7 +106,7 @@ function loadProcess() {
 // 開始処理
 function startProcess(e) {
   // 実施と開始の判定
-  if (sessionStorage.getItem("runFlg") == null && e.keyCode == 32) {
+  if (sessionStorage.getItem("runFlg") == null && e.key == " ") {
     // 実行中へ設定
     sessionStorage.setItem("runFlg", true);
     // 結果の非表示
@@ -142,7 +142,7 @@ function typingStart() {
   mistake = 0;
   correct = 0;
   wordDisplay();
-  var timeRemaining = 10;
+  var timeRemaining = 300;
   var gametimer = setInterval(function () {
     timeLimit.style.visibility = "visible";
     timeLimit.innerHTML = "残り時間：" + timeRemaining;
@@ -406,14 +406,7 @@ function finish() {
   charNum = 0;
 }
 document.onkeydown = function (e) {
-  if (e.keyCode == 189) {
-    keyStr = "-";
-  } else if (e.keyCode == 188) {
-    keyStr = ",";
-  } else {
-    var keyStr = String.fromCharCode(e.keyCode);
-    keyStr = keyStr.toLowerCase();
-  }
+  keyStr = e.key;
   if (keyStr == wordChar) {
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
