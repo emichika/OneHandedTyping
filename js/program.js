@@ -1,5 +1,5 @@
 // 日本語リスト
-var JapaneseList = [
+const JapaneseList = [
   "ああ言えばこう言う",
   "急がば回れ",
   "魚心あれば水心",
@@ -45,7 +45,7 @@ var JapaneseList = [
   "笑う門には福来たる",
 ];
 // ローマ字リスト
-var romajiList = [
+const romajiList = [
   "aaiebakouiu",
   "isogabamaware",
   "uogokoroarebamizugokoro",
@@ -116,7 +116,7 @@ function startProcess(e) {
     // 再スタートの非表示
     restartText.style.display = "none";
     // 開始時間を3秒に設定
-    readytime = 3;
+    let readytime = 3;
     // インターバル処理「1秒間隔」
     var readytimer = setInterval(function () {
       // スタートテキストの非表示
@@ -141,8 +141,8 @@ function startProcess(e) {
 }
 // タイピング開始処理
 function typingStart() {
-  mistake = 0;
   correct = 0;
+  mistake = 0;
   wordDisplay();
   var timeRemaining = 300;
   var gametimer = setInterval(function () {
