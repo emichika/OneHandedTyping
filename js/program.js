@@ -1,102 +1,11 @@
-// 日本語リスト
-const JapaneseList = [
-  "ああ言えばこう言う",
-  "急がば回れ",
-  "魚心あれば水心",
-  "縁の下の力持ち",
-  "鬼の目にも涙",
-  "飼い犬に手を噛まれる",
-  "九死に一生を得る",
-  "口は禍の元",
-  "芸術は長く人生は短し",
-  "後悔先に立たず",
-  "猿も木から落ちる",
-  "知らぬが仏",
-  "酸いも甘いも噛み分けた",
-  "善は急げ",
-  "大は小を兼ねる",
-  "塵も積もれば山となる",
-  "鶴は千年亀は万年",
-  "天は二物を与えず",
-  "時は金なり",
-  "長い物には巻かれろ",
-  "二度あることは三度ある",
-  "糠に釘",
-  "猫の手も借りたい",
-  "暖簾に腕押し",
-  "早起きは三文の徳",
-  "火のないところに煙は立たぬ",
-  "覆水盆に反らず",
-  "弁慶の泣き所",
-  "仏の顔も三度",
-  "眉毛を読まれる",
-  "身から出た錆",
-  "娘一人に婿八人",
-  "目には目、歯には歯",
-  "元の鞘に納まる",
-  "焼け石に水",
-  "油断大敵",
-  "弱り目に祟り目",
-  "楽は苦の種、苦は楽の種",
-  "良薬は口に苦し",
-  "類は友を呼ぶ",
-  "例によって例の如し",
-  "論語読みの論語知らず",
-  "笑う門には福来たる",
-];
-// ローマ字リスト
-const romajiList = [
-  "aaiebakouiu",
-  "isogabamaware",
-  "uogokoroarebamizugokoro",
-  "ennositanotikaramoti",
-  "oninomenimonamida",
-  "kaiinunitewokamareru",
-  "kyuusiniissyouwoeru",
-  "kutihawazawainomoto",
-  "geijutuhanagakujinseihamijikasi",
-  "koukaisakinitatazu",
-  "sarumokikaraotiru",
-  "siranugahotoke",
-  "suimoamaimokamiwaketa",
-  "zenhaisoge",
-  "daihasyouwokaneru",
-  "tirimotumorebayamatonaru",
-  "turuhasennenkamehamannen",
-  "tenhanibutuwoataezu",
-  "tokihakanenari",
-  "nagaimononihamakarero",
-  "nidoarukotohasandoaru",
-  "nukanikugi",
-  "nekonotemokaritai",
-  "norenniudeosi",
-  "hayaokihasanmonnotoku",
-  "hinonaitokoronikemurihatatanu",
-  "hukusuibonnikaerazu",
-  "benkeinonakidokoro",
-  "hotokenokaomosando",
-  "mayugewoyomareru",
-  "mikaradetasabi",
-  "musumehitorinimukohatinin",
-  "menihame,hanihaha",
-  "motonosayaniosamaru",
-  "yakeisinimizu",
-  "yudantaiteki",
-  "yowarimenitatarime",
-  "rakuhakunotane,kuharakunotane",
-  "ryouyakuhakutininigasi",
-  "ruihatomowoyobu",
-  "reiniyottereinogotosi",
-  "rongoyominorongosirazu",
-  "waraukadonihahukukitaru",
-];
-
-var endflg = false;
-var correct;
-var mistake;
-var charNum = 0;
-var wordChar;
-var random;
+//　正解タイプ数
+let correct;
+//　不正解タイプ数
+let incorrect;
+//　入力する文字
+let charToBeEntered;
+let charNum = 0;
+let random;
 
 // ロード処理
 function loadProcess() {
@@ -111,7 +20,7 @@ function loadProcess() {
 }
 // 開始処理
 function startProcess(e) {
-  // 実施と開始の判定
+  // 実行中と開始の判定
   if (sessionStorage.getItem("runFlg") == null && e.key == " ") {
     // 実行中へ設定
     sessionStorage.setItem("runFlg", true);
@@ -120,23 +29,23 @@ function startProcess(e) {
     // 再スタートの非表示
     restartText.style.display = "none";
     // 開始時間を3秒に設定
-    let readytime = 3;
-    // インターバル処理「1秒間隔」
-    var readytimer = setInterval(function () {
+    let countdownTime = 3;
+    // 開始までのインターバル処理(1秒間隔)
+    var countdownInterval = setInterval(function () {
       // スタートテキストの非表示
       startText.style.display = "none";
       // カウントダウンの表示
       countdown.style.display = "block";
       // カウントダウンに開始時間を設定
-      countdown.innerHTML = readytime;
-      // 開始時間のインクリメント
-      readytime--;
-      // 開始判定
-      if (readytime < 0) {
+      countdown.innerHTML = countdownTime;
+      // 開始時間の減算
+      countdownTime--;
+      // 開始の判定
+      if (countdownTime < 0) {
         // カウントダウンの非表示
         countdown.style.display = "none";
         // インターバル処理の終了
-        clearInterval(readytimer);
+        clearInterval(countdownInterval);
         // タイピング開始処理
         typingStart();
       }
@@ -145,38 +54,61 @@ function startProcess(e) {
 }
 // タイピング開始処理
 function typingStart() {
+  // 正解タイプ数の初期化
   correct = 0;
-  mistake = 0;
-  wordDisplay();
-  var timeRemaining = 300;
-  var gametimer = setInterval(function () {
+  // 不正解タイプ数
+  incorrect = 0;
+  // 文の表示処理
+  displayOfSentences();
+  // タイムリミットの設定
+  let remainingTime = 10;
+  // タイムリミットのインターバル処理(1秒間隔)
+  var timeLimitInterval = setInterval(function () {
+    // タイムリミットの表示
     timeLimit.style.visibility = "visible";
-    timeLimit.innerHTML = "残り時間：" + timeRemaining;
-    timeRemaining--;
-    if (timeRemaining == -1) {
-      clearInterval(gametimer);
+    timeLimit.innerHTML = "残り時間：" + remainingTime;
+    // タイムリミットの減算
+    remainingTime--;
+    // タイムリミットの判定
+    if (remainingTime == -1) {
+      // インターバル処理の終了
+      clearInterval(timeLimitInterval);
+      // 実行中の解除
       sessionStorage.removeItem("runFlg");
-      finish();
-      load();
+      // 結果表示処理
+      setOverallResult();
     }
   }, 1000);
-  wordDisplay();
+  // 文の表示処理
+  displayOfSentences();
 }
-function wordDisplay() {
-  random = Math.floor(Math.random() * romajiList.length);
-  japaneseText.innerHTML = JapaneseList[random];
+// 文の表示処理
+function displayOfSentences() {
+  // 文章の要素数からランダムな数字を取得
+  random = Math.floor(Math.random() * japaneseList.length);
+  // 乱数から日本語を取得し表示
+  japaneseText.innerHTML = japaneseList[random];
+  // 乱数からローマ字を取得し表示
   romajiText.innerHTML = romajiList[random];
-
-  charInsort();
-  styleClear();
-  firstHeading.style.display = "block";
-  secondHeading.style.display = "block";
+  // 入力する文字の取得
+  getCharToBeEntered();
+  // スタイルの初期化
+  styleInitialization();
+  // 日本語を表示
+  japaneseText.style.display = "block";
+  // ローマ字を表示
+  romajiText.style.display = "block";
+  // 次回のキーと指のスタイル設定
   nextKeyAndFinger();
 }
-function charInsort() {
-  wordChar = romajiList[random].charAt(charNum);
+// 入力する文字の取得
+function getCharToBeEntered() {
+  //　次回の対象キーのスタイル設定するため、グローバル変数に設定
+  charToBeEntered = romajiList[random].charAt(charNum);
 }
-function styleClear() {
+// スタイルの初期化
+function styleInitialization() {
+  // キーのスタイルの初期化
   qKey.style.color = "#595959";
   qKey.style.backgroundColor = "#ffffff";
   wKey.style.color = "#595959";
@@ -232,14 +164,18 @@ function styleClear() {
   spaceKey.style.color = "#595959";
   spaceKey.style.backgroundColor = "#ffffff";
 
+  // 指のスタイルの初期化
   firstFinger.style.backgroundColor = "#D8D8D8";
   secondFinger.style.backgroundColor = "#D8D8D8";
   thirdFinger.style.backgroundColor = "#D8D8D8";
   fourthFinger.style.backgroundColor = "#D8D8D8";
   fifthFinger.style.backgroundColor = "#D8D8D8";
 }
+// 次回のキーと指のスタイル設定
 function nextKeyAndFinger() {
-  switch (wordChar) {
+  // 入力する文字を判定
+  switch (charToBeEntered) {
+    //キーと指のスタイル設定
     case "a":
       aKey.style.color = "#ffffff";
       aKey.style.backgroundColor = "#ffb43e";
@@ -372,20 +308,21 @@ function nextKeyAndFinger() {
       break;
   }
 }
-function finish() {
+// 結果表示処理
+function setOverallResult() {
   timeLimit.style.visibility = "hidden";
-  firstHeading.style.display = "none";
-  secondHeading.style.display = "none";
+  japaneseText.style.display = "none";
+  romajiText.style.display = "none";
 
   var percentage = 0;
   var score = 0;
-  if (correct == 0 && mistake == 0) {
+  if (correct == 0 && incorrect == 0) {
     percentage = 0 + "%";
   } else {
     score = Math.floor(
-      Math.pow(correct, 2) * Math.pow(correct / (correct + mistake), 5)
+      Math.pow(correct, 2) * Math.pow(correct / (correct + incorrect), 5)
     );
-    percentage = ((correct / (correct + mistake)) * 100).toFixed(1) + "%";
+    percentage = ((correct / (correct + incorrect)) * 100).toFixed(1) + "%";
   }
   overallResult.style.display = "block";
   overallResult.innerHTML =
@@ -395,7 +332,7 @@ function finish() {
     "<hr>正解 タイプ数   : " +
     correct +
     "<br>不正解 タイプ数 : " +
-    mistake +
+    incorrect +
     "<br>正答率          : " +
     percentage +
     "<hr>";
@@ -403,37 +340,40 @@ function finish() {
   restartText.style.color = "#ffb43e";
   restartText.style.textAlign = "center";
   restartText.innerHTML = "スペースキーで開始";
-  styleClear();
+  // スタイルの初期化
+  styleInitialization();
   spaceKey.style.color = "#ffffff";
   spaceKey.style.backgroundColor = "#ffb43e";
   fifthFinger.style.backgroundColor = "#ffb43e";
-  wordChar = "";
+  charToBeEntered = "";
   random = 0;
   charNum = 0;
 }
 document.onkeydown = function (e) {
   keyStr = e.key;
 
-  if (keyStr == wordChar) {
+  if (keyStr == charToBeEntered) {
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
       romajiList[random].substr(0, charNum + 1) +
       "</span>" +
       romajiList[random].substr(charNum + 1, romajiList[random].length);
     charNum++;
+    //　正解タイプ数の加算
     correct++;
-    charInsort();
-    styleClear();
-    if (!endflg) {
-      nextKeyAndFinger();
-    }
+    // 入力する文字の取得
+    getCharToBeEntered();
+    // スタイルの初期化
+    styleInitialization();
+    nextKeyAndFinger();
   } else {
-    mistake++;
+    incorrect++;
   }
   if (typeof random != "undefined") {
     if (charNum == romajiList[random].length) {
       charNum = 0;
-      wordDisplay();
+      // 文の表示処理
+      displayOfSentences();
     }
   }
 };
