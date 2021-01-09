@@ -104,6 +104,10 @@ function loadProcess() {
   sessionStorage.removeItem("runFlg");
   // 親指の色を指定
   fifthFinger.style.backgroundColor = "#ffb43e";
+  // コピーライトの設定
+  setCopyright();
+  // バージョンの設定
+  setVer();
 }
 // 開始処理
 function startProcess(e) {
