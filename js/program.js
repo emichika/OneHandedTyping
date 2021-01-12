@@ -192,72 +192,16 @@ function getCharToBeEntered() {
 // スタイルの初期化
 function styleInitialization() {
   // キーのスタイル初期化
-  // var keys = document.getElementsByClassName("key");
-  // for (i = 0; i < keys.length; i++) {
-  //   keys[i].style.color = "#595959";
-  //   keys[i].style.backgroundColor = "#ffffff";
-  // }
-  qKey.style.color = "#595959";
-  qKey.style.backgroundColor = "#ffffff";
-  wKey.style.color = "#595959";
-  wKey.style.backgroundColor = "#ffffff";
-  eKey.style.color = "#595959";
-  eKey.style.backgroundColor = "#ffffff";
-  rKey.style.color = "#595959";
-  rKey.style.backgroundColor = "#ffffff";
-  tKey.style.color = "#595959";
-  tKey.style.backgroundColor = "#ffffff";
-  yKey.style.color = "#595959";
-  yKey.style.backgroundColor = "#ffffff";
-  uKey.style.color = "#595959";
-  uKey.style.backgroundColor = "#ffffff";
-  iKey.style.color = "#595959";
-  iKey.style.backgroundColor = "#ffffff";
-  oKey.style.color = "#595959";
-  oKey.style.backgroundColor = "#ffffff";
-  pKey.style.color = "#595959";
-  pKey.style.backgroundColor = "#ffffff";
-  aKey.style.color = "#595959";
-  aKey.style.backgroundColor = "#ffffff";
-  sKey.style.color = "#595959";
-  sKey.style.backgroundColor = "#ffffff";
-  dKey.style.color = "#595959";
-  dKey.style.backgroundColor = "#ffffff";
-  fKey.style.color = "#595959";
-  fKey.style.backgroundColor = "#ffffff";
-  gKey.style.color = "#595959";
-  gKey.style.backgroundColor = "#ffffff";
-  hKey.style.color = "#595959";
-  hKey.style.backgroundColor = "#ffffff";
-  jKey.style.color = "#595959";
-  jKey.style.backgroundColor = "#ffffff";
-  kKey.style.color = "#595959";
-  kKey.style.backgroundColor = "#ffffff";
-  lKey.style.color = "#595959";
-  lKey.style.backgroundColor = "#ffffff";
-  zKey.style.color = "#595959";
-  zKey.style.backgroundColor = "#ffffff";
-  xKey.style.color = "#595959";
-  xKey.style.backgroundColor = "#ffffff";
-  cKey.style.color = "#595959";
-  cKey.style.backgroundColor = "#ffffff";
-  vKey.style.color = "#595959";
-  vKey.style.backgroundColor = "#ffffff";
-  bKey.style.color = "#595959";
-  bKey.style.backgroundColor = "#ffffff";
-  nKey.style.color = "#595959";
-  nKey.style.backgroundColor = "#ffffff";
-  mKey.style.color = "#595959";
-  mKey.style.backgroundColor = "#ffffff";
-  spaceKey.style.color = "#595959";
-  spaceKey.style.backgroundColor = "#ffffff";
-
+  var keys = document.getElementsByClassName("key");
+  for (i = 0; i < keys.length; i++) {
+    keys[i].style.color = "#595959";
+    keys[i].style.backgroundColor = "#ffffff";
+  }
   // 指のスタイル初期化
-  firstFinger.style.backgroundColor = "#D8D8D8";
-  secondFinger.style.backgroundColor = "#D8D8D8";
-  thirdFinger.style.backgroundColor = "#D8D8D8";
-  fourthFinger.style.backgroundColor = "#D8D8D8";
-  fifthFinger.style.backgroundColor = "#D8D8D8";
+  var fingers = document.getElementsByClassName("finger");
+  for (i = 0; i < fingers.length; i++) {
+    fingers[i].style.backgroundColor = "#D8D8D8";
+  }
 }
 // 次回のキーと指のスタイル設定
 function nextKeyAndFinger() {
@@ -270,7 +214,7 @@ function nextKeyAndFinger() {
       if (sessionStorage.getItem("dominantHandFlg") == "L") {
         firstFinger.style.backgroundColor = "#ffb43e";
       } else {
-        fifthFinger.style.backgroundColor = "#ffb43e";
+        secondFinger.style.backgroundColor = "#ffb43e";
       }
       break;
     case "I":
