@@ -15,8 +15,6 @@ function loadProcess() {
   sessionStorage.removeItem("dominantHandFlg");
   // 実行中のセッションを削除
   sessionStorage.removeItem("runFlg");
-  // 親指の色を指定
-  fifthFinger.style.backgroundColor = "#ffb43e";
   // コピーライトの設定
   setCopyright();
   // バージョンの設定
@@ -41,6 +39,31 @@ document.onkeydown = function (e) {
     // スタートテキストの表示
     startText.innerHTML = "スペースキーで開始";
     startText.style.display = "block";
+    // Rキーのスタイルを初期化
+    rKey.style.color = "#595959";
+    rKey.style.backgroundColor = "#ffffff";
+    // Lキーのスタイルを初期化
+    lKey.style.color = "#595959";
+    lKey.style.backgroundColor = "#ffffff";
+    // スペースキーのスタイル設定
+    spaceKey.style.color = "#ffffff";
+    spaceKey.style.backgroundColor = "#ffb43e";
+    // 手の設定
+    hand.innerHTML =
+      "<div id='firstFinger' class='finger'></div>" +
+      "<div id='secondFinger' class='finger'></div>" +
+      "<div id='thirdFinger' class='finger'></div>" +
+      "<div id='fourthFinger' class='finger'></div>" +
+      "<div id='fifthFinger' class='finger'></div>";
+    // 左手の親指のスタイルを設定
+    if (sessionStorage.getItem("dominantHandFlg") == "l") {
+      fifthFinger.style.height = "35px";
+      fifthFinger.style.backgroundColor = "#ffb43e";
+    } else {
+      // 右手の親指のスタイルを設定
+      firstFinger.style.height = "35px";
+      firstFinger.style.backgroundColor = "#ffb43e";
+    }
     return;
   }
 
@@ -522,7 +545,11 @@ function setOverallResult() {
   spaceKey.style.color = "#ffffff";
   spaceKey.style.backgroundColor = "#ffb43e";
   // 親指のスタイル設定
-  fifthFinger.style.backgroundColor = "#ffb43e";
+  if (sessionStorage.getItem("dominantHandFlg") == "l") {
+    fifthFinger.style.backgroundColor = "#ffb43e";
+  } else {
+    firstFinger.style.backgroundColor = "#ffb43e";
+  }
   // 入力する文字の初期化
   charToBeEntered = "";
   // 乱数の初期化

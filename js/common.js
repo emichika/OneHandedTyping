@@ -93,7 +93,7 @@ const romajiList = [
 ];
 
 const copr = "&copy; Copyright emichika Inc. All Rights <span id='ver'></span>";
-const verNum = "1.1.10";
+const verNum = "2.0.0";
 
 function setCopyright() {
   copyright.innerHTML = copr;

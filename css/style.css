@@ -162,6 +162,8 @@ body {
 #keyboard #allKeys #rKey {
   left: 184px;
   top: 41px;
+  background-color: #ffb43e;
+  color: #ffffff;
 }
 #keyboard #allKeys #tKey {
   left: 225px;
@@ -243,6 +245,8 @@ body {
 #keyboard #allKeys #lKey {
   left: 409px;
   top: 82px;
+  background-color: #ffb43e;
+  color: #ffffff;
 }
 #keyboard #allKeys #semicolonKey {
   left: 450px;
@@ -332,8 +336,8 @@ body {
   width: 179px;
   left: 184px;
   top: 164px;
-  background-color: #ffb43e;
-  color: #ffffff;
+  /* background-color: #ffb43e; */
+  /* color: #ffffff; */
 }
 #keyboard #allKeys #conversionKey {
   top: 164px;
@@ -385,10 +389,10 @@ body {
   left: 141px;
 }
 #hand #fifthFinger {
-  height: 35px;
+  height: 55px;
   left: 188px;
 }
-footer {
+#copyright {
   text-align: center;
-  margin-bottom: 0px;
+  bottom: 0px;
 }
