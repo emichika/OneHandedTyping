@@ -24,10 +24,10 @@ function loadProcess() {
 document.onkeydown = function (e) {
   // 利き手判定
   if (sessionStorage.getItem("dominantHandFlg") == null) {
-    if (e.key == "l") {
+    if (e.key.toLowerCase() == "l") {
       // 左利きの場合
       sessionStorage.setItem("dominantHandFlg", "l");
-    } else if (e.key == "r") {
+    } else if (e.key.toLowerCase() == "r") {
       // 右利きの場合
       sessionStorage.setItem("dominantHandFlg", "r");
     } else {
@@ -70,7 +70,7 @@ document.onkeydown = function (e) {
   // 開始処理
   startProcess(e);
   // 入力する文字と入力した文字の一致する場合
-  if (charToBeEntered == e.key) {
+  if (charToBeEntered == e.key.toUpperCase()) {
     // 一致した文字のスタイル設定
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
