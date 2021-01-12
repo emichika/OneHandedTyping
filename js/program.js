@@ -1,11 +1,13 @@
-//　正解タイプ数
+// 正解タイプ数
 let correct;
-//　不正解タイプ数
+// 不正解タイプ数
 let incorrect;
-//　入力する文字
+// 入力する文字
 let charToBeEntered;
-let charNum = 0;
+// 乱数
 let random;
+// 文字番号(何文字目か)
+let charNum = 0;
 
 // ロード処理
 function loadProcess() {
@@ -73,8 +75,6 @@ function typingStart() {
     if (remainingTime == -1) {
       // インターバル処理の終了
       clearInterval(timeLimitInterval);
-      // 実行中の解除
-      sessionStorage.removeItem("runFlg");
       // 結果表示処理
       setOverallResult();
     }
@@ -103,12 +103,12 @@ function displayOfSentences() {
 }
 // 入力する文字の取得
 function getCharToBeEntered() {
-  //　次回の対象キーのスタイル設定するため、グローバル変数に設定
+  // 次回の対象キーのスタイル設定するため、グローバル変数に設定
   charToBeEntered = romajiList[random].charAt(charNum);
 }
 // スタイルの初期化
 function styleInitialization() {
-  // キーのスタイルの初期化
+  // キーのスタイル初期化
   qKey.style.color = "#595959";
   qKey.style.backgroundColor = "#ffffff";
   wKey.style.color = "#595959";
@@ -164,7 +164,7 @@ function styleInitialization() {
   spaceKey.style.color = "#595959";
   spaceKey.style.backgroundColor = "#ffffff";
 
-  // 指のスタイルの初期化
+  // 指のスタイル初期化
   firstFinger.style.backgroundColor = "#D8D8D8";
   secondFinger.style.backgroundColor = "#D8D8D8";
   thirdFinger.style.backgroundColor = "#D8D8D8";
@@ -310,21 +310,32 @@ function nextKeyAndFinger() {
 }
 // 結果表示処理
 function setOverallResult() {
+  // タイムリミットの非表示
   timeLimit.style.visibility = "hidden";
+  // 日本語の非表示
   japaneseText.style.display = "none";
+  // ローマ字の非表示
   romajiText.style.display = "none";
-
+  // 正答率の初期化
   var percentage = 0;
+  // スコアの初期化
   var score = 0;
+  // 正解と不正解タイプ数が「0」の場合、
+  // 正答率に「0 %」を設定
   if (correct == 0 && incorrect == 0) {
     percentage = 0 + "%";
   } else {
+    // スコアの算出
+    // 正解タイプ数の2乗と正答率の5乗を乗算
     score = Math.floor(
       Math.pow(correct, 2) * Math.pow(correct / (correct + incorrect), 5)
     );
+    // 全タイプ数から正答率を算出
     percentage = ((correct / (correct + incorrect)) * 100).toFixed(1) + "%";
   }
+  // 結果の要請を設定
   overallResult.style.display = "block";
+  // 結果の表示
   overallResult.innerHTML =
     "スコア : " +
     score +
@@ -336,41 +347,57 @@ function setOverallResult() {
     "<br>正答率          : " +
     percentage +
     "<hr>";
+  // 再スタートの設定
   restartText.style.display = "block";
   restartText.style.color = "#ffb43e";
   restartText.style.textAlign = "center";
   restartText.innerHTML = "スペースキーで開始";
   // スタイルの初期化
   styleInitialization();
+  // スペースキーのスタイル設定
   spaceKey.style.color = "#ffffff";
   spaceKey.style.backgroundColor = "#ffb43e";
+  // 親指のスタイル設定
   fifthFinger.style.backgroundColor = "#ffb43e";
+  // 入力する文字の初期化
   charToBeEntered = "";
+  // 乱数の初期化
   random = 0;
+  // 文字番号の初期化
   charNum = 0;
+  // 実行中の解除
+  sessionStorage.removeItem("runFlg");
 }
+// キー押下処理
 document.onkeydown = function (e) {
-  keyStr = e.key;
-
-  if (keyStr == charToBeEntered) {
+  // 入力する文字と入力した文字の一致する場合
+  if (charToBeEntered == e.key) {
+    // 一致した文字のスタイル設定
     romajiText.innerHTML =
       "<span style='color: #ffb43e;'>" +
       romajiList[random].substr(0, charNum + 1) +
       "</span>" +
       romajiList[random].substr(charNum + 1, romajiList[random].length);
+    // 文字番号の加算
     charNum++;
-    //　正解タイプ数の加算
+    // 正解タイプ数の加算
     correct++;
     // 入力する文字の取得
     getCharToBeEntered();
     // スタイルの初期化
     styleInitialization();
+    // 次回のキーと指のスタイル設定
     nextKeyAndFinger();
+    // 入力する文字と入力した文字の一致しない場合
   } else {
+    // 正解タイプ数の加算
     incorrect++;
   }
+  // 乱数の初期化判定(エラー回避のため)
   if (typeof random != "undefined") {
+    // 最終文字の入力確認判定
     if (charNum == romajiList[random].length) {
+      // 文字番号の初期化
       charNum = 0;
       // 文の表示処理
       displayOfSentences();
