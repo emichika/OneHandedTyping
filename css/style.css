@@ -25,6 +25,15 @@ body {
   overflow: hidden;
   position: relative;
 }
+#dominantHand {
+  font-size: 30px;
+  text-align: left;
+  padding-top: 50px;
+}
+#lAndRKey {
+  color: #ffb43e;
+  font-size: 30px;
+}
 #startText {
   color: #ffb43e;
   font-size: 50px;

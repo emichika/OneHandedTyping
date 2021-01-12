@@ -11,7 +11,9 @@ let charNum = 0;
 
 // ロード処理
 function loadProcess() {
-  // 実行中の解除
+  // 利き手のセッションを削除
+  sessionStorage.removeItem("dominantHandFlg");
+  // 実行中のセッションを削除
   sessionStorage.removeItem("runFlg");
   // 親指の色を指定
   fifthFinger.style.backgroundColor = "#ffb43e";
@@ -22,6 +24,26 @@ function loadProcess() {
 }
 // キー押下処理
 document.onkeydown = function (e) {
+  // 利き手判定
+  if (sessionStorage.getItem("dominantHandFlg") == null) {
+    if (e.key == "l") {
+      // 左利きの場合
+      sessionStorage.setItem("dominantHandFlg", "l");
+    } else if (e.key == "r") {
+      // 右利きの場合
+      sessionStorage.setItem("dominantHandFlg", "r");
+    } else {
+      // 「l」または「r」キー以外は処理終了
+      return;
+    }
+    // 利き手テキストの非表示
+    dominantHand.style.display = "none";
+    // スタートテキストの表示
+    startText.innerHTML = "スペースキーで開始";
+    startText.style.display = "block";
+    return;
+  }
+
   // 開始処理
   startProcess(e);
   // 入力する文字と入力した文字の一致する場合
@@ -217,132 +239,236 @@ function nextKeyAndFinger() {
     case "a":
       aKey.style.color = "#ffffff";
       aKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "i":
       iKey.style.color = "#ffffff";
       iKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "u":
       uKey.style.color = "#ffffff";
       uKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "e":
       eKey.style.color = "#ffffff";
       eKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "o":
       oKey.style.color = "#ffffff";
       oKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "q":
       qKey.style.color = "#ffffff";
       qKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "w":
       wKey.style.color = "#ffffff";
       wKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "r":
       rKey.style.color = "#ffffff";
       rKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "t":
       tKey.style.color = "#ffffff";
       tKey.style.backgroundColor = "#ffb43e";
-      secondFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        thirdFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "y":
       yKey.style.color = "#ffffff";
       yKey.style.backgroundColor = "#ffb43e";
-      thirdFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        thirdFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "p":
       pKey.style.color = "#ffffff";
       pKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "s":
       sKey.style.color = "#ffffff";
       sKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "d":
       dKey.style.color = "#ffffff";
       dKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "f":
       fKey.style.color = "#ffffff";
       fKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "g":
       gKey.style.color = "#ffffff";
       gKey.style.backgroundColor = "#ffb43e";
-      secondFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        thirdFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "h":
       hKey.style.color = "#ffffff";
       hKey.style.backgroundColor = "#ffb43e";
-      thirdFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        thirdFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "j":
       jKey.style.color = "#ffffff";
       jKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "k":
       kKey.style.color = "#ffffff";
       kKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "l":
       lKey.style.color = "#ffffff";
       lKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "z":
       zKey.style.color = "#ffffff";
       zKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "x":
       xKey.style.color = "#ffffff";
       xKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "c":
       cKey.style.color = "#ffffff";
       cKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "v":
       vKey.style.color = "#ffffff";
       vKey.style.backgroundColor = "#ffb43e";
-      firstFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        firstFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "b":
       bKey.style.color = "#ffffff";
       bKey.style.backgroundColor = "#ffb43e";
-      secondFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        secondFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        thirdFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "n":
       nKey.style.color = "#ffffff";
       nKey.style.backgroundColor = "#ffb43e";
-      thirdFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        thirdFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
     case "m":
       mKey.style.color = "#ffffff";
       mKey.style.backgroundColor = "#ffb43e";
-      fourthFinger.style.backgroundColor = "#ffb43e";
+      if (sessionStorage.getItem("dominantHandFlg") == "l") {
+        fourthFinger.style.backgroundColor = "#ffb43e";
+      } else {
+        fifthFinger.style.backgroundColor = "#ffb43e";
+      }
       break;
   }
 }
