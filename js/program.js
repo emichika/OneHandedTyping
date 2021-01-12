@@ -20,6 +20,44 @@ function loadProcess() {
   // バージョンの設定
   setVer();
 }
+// キー押下処理
+document.onkeydown = function (e) {
+  // 開始処理
+  startProcess(e);
+  // 入力する文字と入力した文字の一致する場合
+  if (charToBeEntered == e.key) {
+    // 一致した文字のスタイル設定
+    romajiText.innerHTML =
+      "<span style='color: #ffb43e;'>" +
+      romajiList[random].substr(0, charNum + 1) +
+      "</span>" +
+      romajiList[random].substr(charNum + 1, romajiList[random].length);
+    // 文字番号の加算
+    charNum++;
+    // 正解タイプ数の加算
+    correct++;
+    // 入力する文字の取得
+    getCharToBeEntered();
+    // スタイルの初期化
+    styleInitialization();
+    // 次回のキーと指のスタイル設定
+    nextKeyAndFinger();
+    // 入力する文字と入力した文字の一致しない場合
+  } else {
+    // 正解タイプ数の加算
+    incorrect++;
+  }
+  // 乱数の初期化判定(エラー回避のため)
+  if (typeof random != "undefined") {
+    // 最終文字の入力確認判定
+    if (charNum == romajiList[random].length) {
+      // 文字番号の初期化
+      charNum = 0;
+      // 文の表示処理
+      displayOfSentences();
+    }
+  }
+};
 // 開始処理
 function startProcess(e) {
   // 実行中と開始の判定
@@ -368,39 +406,3 @@ function setOverallResult() {
   // 実行中の解除
   sessionStorage.removeItem("runFlg");
 }
-// キー押下処理
-document.onkeydown = function (e) {
-  // 入力する文字と入力した文字の一致する場合
-  if (charToBeEntered == e.key) {
-    // 一致した文字のスタイル設定
-    romajiText.innerHTML =
-      "<span style='color: #ffb43e;'>" +
-      romajiList[random].substr(0, charNum + 1) +
-      "</span>" +
-      romajiList[random].substr(charNum + 1, romajiList[random].length);
-    // 文字番号の加算
-    charNum++;
-    // 正解タイプ数の加算
-    correct++;
-    // 入力する文字の取得
-    getCharToBeEntered();
-    // スタイルの初期化
-    styleInitialization();
-    // 次回のキーと指のスタイル設定
-    nextKeyAndFinger();
-    // 入力する文字と入力した文字の一致しない場合
-  } else {
-    // 正解タイプ数の加算
-    incorrect++;
-  }
-  // 乱数の初期化判定(エラー回避のため)
-  if (typeof random != "undefined") {
-    // 最終文字の入力確認判定
-    if (charNum == romajiList[random].length) {
-      // 文字番号の初期化
-      charNum = 0;
-      // 文の表示処理
-      displayOfSentences();
-    }
-  }
-};
