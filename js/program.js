@@ -31,7 +31,7 @@ document.onkeydown = function (e) {
       // 右利きの場合
       sessionStorage.setItem("dominantHandFlg", "R");
     } else {
-      // 「l」または「r」キー以外は処理終了
+      // 「L」または「R」キー以外は処理終了
       return;
     }
     // 利き手テキストの非表示
@@ -147,13 +147,15 @@ function typingStart() {
   displayOfSentences();
   // タイムリミットの設定
   let remainingTime = 10;
+  // タイムリミットの表示
+  timeLimit.style.visibility = "visible";
+  timeLimit.innerHTML = "残り時間：" + remainingTime;
   // タイムリミットのインターバル処理(1秒間隔)
   var timeLimitInterval = setInterval(function () {
-    // タイムリミットの表示
-    timeLimit.style.visibility = "visible";
-    timeLimit.innerHTML = "残り時間：" + remainingTime;
     // タイムリミットの減算
     remainingTime--;
+    // タイムリミットの再表示
+    timeLimit.innerHTML = "残り時間：" + remainingTime;
     // タイムリミットの判定
     if (remainingTime == -1) {
       // インターバル処理の終了
