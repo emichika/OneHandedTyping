@@ -146,7 +146,7 @@ function typingStart() {
   // 文の表示処理
   displayOfSentences();
   // タイムリミットの設定
-  let remainingTime = 10;
+  let remainingTime = remainingTimeVal;
   // タイムリミットの表示
   timeLimit.style.visibility = "visible";
   timeLimit.innerHTML = "残り時間：" + remainingTime;

@@ -12,7 +12,6 @@ const japaneseList = [
   "一頭地を抜く",
   "上には上がある",
 ];
-
 // ローマ字リスト
 const romajiList = [
   "AOHAAIYORIIDETEAIYORIAOSI",
@@ -26,14 +25,17 @@ const romajiList = [
   "ITTOUTIWONUKU",
   "UENIHAUEGAARU",
 ];
-
+// 残り時間
+const remainingTimeVal = 10;
+// コピーライト
 const copr = "&copy; Copyright emichika Inc. All Rights <span id='ver'></span>";
-const verNum = "2.3.4";
-
+// バージョン
+const verNum = "2.3.5";
+// コピーライトの設定
 function setCopyright() {
   copyright.innerHTML = copr;
 }
-
+// バージョンの設定
 function setVer() {
   ver.innerHTML = "Ver." + verNum;
 }
