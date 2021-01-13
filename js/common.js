@@ -1,3 +1,4 @@
+// 参考
 // 日本語リスト
 const japaneseList = [
   "青は藍より出でて藍より青し",
@@ -17,7 +18,7 @@ const romajiList = [
 ];
 
 const copr = "&copy; Copyright emichika Inc. All Rights <span id='ver'></span>";
-const verNum = "2.2.2";
+const verNum = "2.2.3";
 
 function setCopyright() {
   copyright.innerHTML = copr;
