@@ -141,7 +141,7 @@ const remainingTimeVal = 10;
 // コピーライト
 const copr = "&copy; Copyright emichika Inc. All Rights <span id='ver'></span>";
 // バージョン
-const verNum = "2.3.6";
+const verNum = "2.3.7";
 // コピーライトの設定
 function setCopyright() {
   copyright.innerHTML = copr;
