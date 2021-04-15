@@ -22,7 +22,6 @@ const japaneseList = [
   "口も八丁手も八丁",
   "君子危うきに近寄らず",
   "君子は豹変す",
-  "君子は和して同ぜず、小人は同じて和せず",
   "鶏群の一鶴",
   "兄たり難く弟たり難し",
   "好機逸すべからず",
@@ -91,7 +90,6 @@ const romajiList = [
   "KUTIMOHATTYOUTEMOHATTYOU",
   "KUNNSIAYAUKINITIKAYORAZU",
   "KUNNSIHAHYOUHENNSU",
-  "KUNNSIHAWASITEDOUZEZU,SYOUJINNHADOUJITEWASEZU",
   "KEIGUNNNOIKKAKU",
   "KEITARIGATAKUTEITARIGATASI",
   "KOUKIISSUBEKARAZU",
@@ -141,7 +139,7 @@ const remainingTimeVal = 10;
 // コピーライト
 const copr = "&copy; Copyright emichika Inc. All Rights <span id='ver'></span>";
 // バージョン
-const verNum = "2.3.7";
+const verNum = "1.0.0";
 // コピーライトの設定
 function setCopyright() {
   copyright.innerHTML = copr;
