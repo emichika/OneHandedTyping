@@ -135,7 +135,7 @@ const romajiList = [
   "ROKKONNSYOUJYOU",
 ];
 // 残り時間
-const remainingTimeVal = 10;
+const remainingTimeVal = 180;
 // コピーライト
 const copr = "&copy; Copyright emichika Inc. All Rights <span id='ver'></span>";
 // バージョン
